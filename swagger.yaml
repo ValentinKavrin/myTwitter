@@ -183,7 +183,7 @@ paths:
           description: Update user - successfully
         "401":
           description: You need to log in
-  /api/user:
+  /api/user/:
     delete:
       tags:
       - "user"
