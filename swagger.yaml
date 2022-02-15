@@ -1,23 +1,23 @@
 openapi: 3.0.1
 info:
-  description: "This my first swagger"
-  version: "3.0.0"
-  title: "Swagger DB"
+  description: This my first swagger
+  version: 3.0.0
+  title: Swagger DB
   contact:
-    email: "kavrin00@mail.ru"
+    email: kavrin00@mail.ru
 
 tags:
-- name: "auth"
-- name: "post"
-- name: "user"
+- name: auth
+- name: post
+- name: user
 schemes:
-- "https"
-- "http"
+- https
+- http
 paths:
   /auth/registration:
     post:
       tags:
-      - "auth"
+      - auth
       summary: register user
       description: registration a new user
       parameters:
@@ -27,16 +27,16 @@ paths:
       - in: body
         name: body
         schema:
-          $ref: '#/components/registration'              
+          $ref: '#/components/registration'            
       responses:
-        "201": 
+        '201': 
           description: user register successfully
-        "400": 
+        '400': 
           description: Registration error
   /auth/login:
     post:
       tags:
-      - "auth"
+      - auth
       summary: login user
       parameters:
       - in: body
@@ -44,14 +44,14 @@ paths:
         schema:
           $ref: '#/components/login'              
       responses:
-        "200": 
+        '200': 
           description: user login successfully
-        "400": 
+        '400': 
           description: login error
   /api/post:
     post:
       tags:
-      - "post"
+      - post
       summary: Create post
       description: Create a new post
       parameters:
@@ -63,14 +63,14 @@ paths:
         schema:
           $ref: '#/post/createPost'              
       responses:
-        "400": 
+        '400': 
           description: Create new post error
-        "401":
+        '401':
           description: You need to log in
   /api/post/{postId}:
     get:
       tags:
-      - "post"
+      - post
       summary: Get one post
       description: The user gets one post and can edit it
       parameters:
@@ -80,14 +80,14 @@ paths:
       - in: path
         name: postId             
       responses:
-        "400": 
+        '400': 
           description: Пост не найден, возможно был удален
-        "401":
+        '401':
           description: You need to log in
   /api/posts/{userId}:
     get:
       tags:
-      - "post"
+      - post
       summary: Get post by user
       description: The user gets all this post
       parameters:
@@ -97,14 +97,14 @@ paths:
       - in: path
         name: userId       
       responses:
-        "400": 
+        '400': 
           description: Посты еще не были созданы
-        "401":
+        '401':
           description: You need to log in
   /api/posts/:
     get:
       tags:
-      - "post"
+      - post
       summary: Get all post 
       description: The user gets all post
       parameters:
@@ -112,12 +112,12 @@ paths:
         name: authorization
         required: true      
       responses:
-        "401":
+        '401':
           description: You need to log in
   /api/post/{idPost}:
     put:
       tags:
-      - "post"
+      - post
       summary: Update post
       description: The user can edit post
       parameters:
@@ -131,14 +131,14 @@ paths:
         schema:
           $ref: '#/post/updatePost'     
       responses:
-        "200":
+        '200':
           description: Update post - successfully
-        "401":
+        '401':
           description: You need to log in
   /api/post/:
     delete:
       tags:
-      - "post"
+      - post
       summary: Get all post 
       description: The user gets all post
       parameters:
@@ -150,12 +150,12 @@ paths:
         schema:
           $ref: '#/post/deletePost'     
       responses:
-        "401":
+        '401':
           description: You need to log in
   /api/user/{userId}:
     get:
       tags:
-      - "user"
+      - user
       summary: Get user 
       parameters:
       - in: header
@@ -164,12 +164,12 @@ paths:
       - in: path
         name: userId 
       responses:
-        "401":
+        '401':
           description: You need to log in
   /api/user:
     put:
       tags:
-      - "user"
+      - user
       summary: Update user
       parameters:
       - in: header
@@ -180,27 +180,27 @@ paths:
         schema:
           $ref: '#/user/updateUser'     
       responses:
-        "200":
+        '200':
           description: Update user - successfully
-        "401":
+        '401':
           description: You need to log in
   /api/user/:
     delete:
       tags:
-      - "user"
+      - user
       summary: Delete user
       parameters:
       - in: header
         name: authorization
         required: true      
       responses:
-        "401":
+        '401':
           description: You need to log in
 
 
 components:
   registration:
-    type: "object"
+    type: object
     properties:
       userName:
         type: string
@@ -211,7 +211,7 @@ components:
       password:
         type: string
   login:
-    type: "object"
+    type: object
     properties:
       userName:
         type: string
@@ -220,28 +220,28 @@ components:
 
 post:
   createPost:
-    type: "object"
+    type: object
     properties:
       title:
         type: string
       content:
         type: string
   updatePost:
-    type: "object"
+    type: object
     properties:
       title:
         type: string
       content:
         type: string
   deletePost:
-    type: "object"
+    type: object
     properties:
       id:
         type: string
   
 user:
   updateUser:
-    type: "object"
+    type: object
     properties:
       name:
         type: string
