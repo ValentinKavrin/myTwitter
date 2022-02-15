@@ -1,4 +1,4 @@
-swagger: "2.0"
+openapi: 3.0.1
 info:
   description: "This my first swagger"
   version: "3.0.0"
@@ -8,6 +8,8 @@ info:
 
 tags:
 - name: "auth"
+- name: "post"
+- name: "user"
 schemes:
 - "https"
 - "http"
@@ -49,7 +51,7 @@ paths:
   /api/post:
     post:
       tags:
-      - "auth"
+      - "post"
       summary: Create post
       description: Create a new post
       parameters:
@@ -68,7 +70,7 @@ paths:
   /api/post/{postId}:
     get:
       tags:
-      - "auth"
+      - "post"
       summary: Get one post
       description: The user gets one post and can edit it
       parameters:
@@ -85,7 +87,7 @@ paths:
   /api/posts/{userId}:
     get:
       tags:
-      - "auth"
+      - "post"
       summary: Get post by user
       description: The user gets all this post
       parameters:
@@ -102,7 +104,7 @@ paths:
   /api/posts/:
     get:
       tags:
-      - "auth"
+      - "post"
       summary: Get all post 
       description: The user gets all post
       parameters:
@@ -115,7 +117,7 @@ paths:
   /api/post/{idPost}:
     put:
       tags:
-      - "auth"
+      - "post"
       summary: Update post
       description: The user can edit post
       parameters:
@@ -136,7 +138,7 @@ paths:
   /api/post/:
     delete:
       tags:
-      - "auth"
+      - "post"
       summary: Get all post 
       description: The user gets all post
       parameters:
@@ -153,7 +155,7 @@ paths:
   /api/user/{userId}:
     get:
       tags:
-      - "auth"
+      - "user"
       summary: Get user 
       parameters:
       - in: header
@@ -167,7 +169,7 @@ paths:
   /api/user:
     put:
       tags:
-      - "auth"
+      - "user"
       summary: Update user
       parameters:
       - in: header
@@ -185,7 +187,7 @@ paths:
   /api/user:
     delete:
       tags:
-      - "auth"
+      - "user"
       summary: Delete user
       parameters:
       - in: header
