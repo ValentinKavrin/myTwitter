@@ -8,10 +8,11 @@ info:
 
 tags:
 - name: "auth"
-tags:
 - name: "post"
-tags:
 - name: "user"
+schemes:
+- "https"
+- "http"
 paths:
   /auth/registration:
     post:
@@ -165,7 +166,7 @@ paths:
       responses:
         "401":
           description: You need to log in
-  /api/user/:
+  /api/user:
     put:
       tags:
       - "user"
@@ -183,7 +184,7 @@ paths:
           description: Update user - successfully
         "401":
           description: You need to log in
-  /api/user/:
+  /api/user:
     delete:
       tags:
       - "user"
