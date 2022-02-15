@@ -1,4 +1,4 @@
-swagger: "2.0.0"
+swagger: "2.0"
 info:
   description: "This my first swagger"
   version: "2.0.0"
