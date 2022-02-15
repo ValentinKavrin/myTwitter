@@ -4,6 +4,7 @@ const postRouter = require('./routes/post.routes')
 const authRouter = require('./routes/auth.routes')
 const swaggerUi = require('swagger-ui-express')
 const YAML = require('yamljs');
+const cors = require('cors')
 const swaggerDocument = YAML.load('./swagger.yaml');
 
 const PORT = process.env.PORT || 3333;
@@ -11,6 +12,8 @@ const PORT = process.env.PORT || 3333;
 const app = express()
 
 app.use(express.json())
+
+app.use(cors())
 
 app.use('/api', userRouter)
 app.use('/api', postRouter)
