@@ -29,6 +29,10 @@
             lazy-rules
             :rules="[ val => passwordRegEx.test(val) || 'Type valid password']"
           />
+          <p class="q-pt-md text-body1">
+            <span>Already a member?</span>
+            <span class="text-primary text-weight-bold" style="cursor: pointer" @click="$emit('goToLogin')"> Sign in</span>
+          </p>
         </q-form>
       </q-step>
 
@@ -74,6 +78,7 @@
 <script>
 import {ref} from 'vue'
 import {useQuasar} from "quasar";
+import { api } from 'boot/axios'
 
 export default {
   setup() {
@@ -86,7 +91,6 @@ export default {
     const lastName = ref(null)
     const password = ref(null)
 
-
     return {
       step: ref(1),
       login,
@@ -96,15 +100,25 @@ export default {
 
 
 
-
-      onSubmit() {
-          $q.notify({
-            color: 'green-4',
-            textColor: 'white',
-            icon: 'cloud_done',
-            message: 'Submitted'
-          })
+      showErrorNotify() {
+        $q.notify({
+          color: 'red-5',
+          textColor: 'white',
+          position: 'top',
+          icon: 'warning',
+          message: 'Incorrect login data'
+        })
       },
+
+      showSuccessNotify() {
+        $q.notify({
+          color: 'green-4',
+          textColor: 'white',
+          position: 'top',
+          icon: 'cloud_done',
+          message: 'Signed up successfully'
+        })
+      }
     }
   },
   data() {
@@ -126,10 +140,24 @@ export default {
       if (this.step == 1) {
         this.$refs.stepper.next()
       } else {
-        console.log(this.login)
+        api.post('/auth/registration', {
+          userName: this.login,
+          name: this.firstName,
+          surname: this.lastName,
+          password: this.password
+        })
+          .then((response) => {
+            if (response.status === 201) {
+              this.$emit('goToLogin')
+              this.showSuccessNotify()
+            }
+          })
+          .catch(() => {
+            this.showErrorNotify()
+          })
+      }
       }
     },
-  }
 
 }
 </script>

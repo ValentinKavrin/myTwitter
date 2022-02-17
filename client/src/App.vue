@@ -9,10 +9,5 @@ export default defineComponent({
 });
 </script>
 <style>
-.text-secondary {
-  color: #038A5B !important;
-}
-.bg-secondary {
-  background: #038A5B !important;
-}
+
 </style>
