@@ -7,7 +7,7 @@ class PostController{
     async createPost(req, res){
         try {
             const {title, content} = req.body
-            const token = req.headers.authorization.split(' ')[1]  
+            const token = req.headers.authorization.split(' ')[1]
             if (!token) {
                 return res.status(401).json( {message: 'Необходимо авторизоваться'} )
             } 
@@ -44,7 +44,7 @@ class PostController{
 
     async getPosts(req,res) { 
         const posts = await dbPost.getPosts()
-        res.json(posts.rows[0])
+        res.json(posts.rows)
     }
 
     async updatePost(req, res) {
