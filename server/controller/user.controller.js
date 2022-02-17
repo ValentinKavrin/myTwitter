@@ -7,7 +7,7 @@ class UserController{
     async getOneUser(req,res){
         const id = req.params.id
         const user = await dbUser.getOneUser(id)
-        res.json(user.rows[0])
+        return res.json(user.rows[0])
     }
     // обновляет данные пользователей
     async updateUser(req,res){
@@ -18,7 +18,7 @@ class UserController{
         const { id: idUser } = jwt.verify(token, secret)
         const {name, surname} = req.body
         const user = await dbUser.updateUser(idUser, name, surname)
-        res.json(user.rows[0])
+        return res.status(201).json({message: "Update successfully"})
     }
     // удаляет данные пользователей
     async deleteUser(req,res){

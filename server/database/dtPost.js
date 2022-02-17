@@ -27,7 +27,7 @@ const getPostByUser = async function (userId) {
 }
 
 const getPosts = async function () {
-    const posts = await db.query(`select name, surname, title, content from person, post where user_id = id`)
+    const posts = await db.query(`select id_post, name, surname, title, content, date from person, post where user_id = id`)
     return posts
 }
 
@@ -36,7 +36,7 @@ const updatePost = async function (idPost, title, content) {
     if (updatePost.rowCount === 0) {
         return false
     }
-    return true
+    return updatePost
 }
 
 const deletePost = async function (id) {

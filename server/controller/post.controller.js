@@ -44,7 +44,7 @@ class PostController{
 
     async getPosts(req,res) { 
         const posts = await dbPost.getPosts()
-        res.json(posts.rows)
+        res.json(posts.rows[0])
     }
 
     async updatePost(req, res) {
