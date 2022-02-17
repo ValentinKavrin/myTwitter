@@ -30,7 +30,7 @@ class PostController{
         if (onePost === false) {
             return res.status(400).json( {message: 'Пост не найден, возможно был удален'} )
         }
-        res.json(onePost.rows[0])
+        res.json(onePost.rows)
     }
 
     async getPostByUser(req, res){  
