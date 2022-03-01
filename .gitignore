@@ -32,5 +32,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-
-db.js
+db
